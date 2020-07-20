@@ -1,0 +1,21 @@
+<div class="col-md-12">
+  <div class="post">
+
+    <%= link_to("回到作者列表", foreground_users_path, class: "btn btn-primary") %>
+
+  </div>
+
+  <div>
+    <h3>
+      作者邮箱：<%= @user.email %>
+    </h3>
+    <h4>
+      作者注册时间：<%= @user.created_at.strftime("%Y-%b-%d   %H:%M") %>
+    </h4>
+    <h4>
+      作者文章数量：<%= @user.posts.count %>
+    </h4>
+
+
+  </div>
+</div>

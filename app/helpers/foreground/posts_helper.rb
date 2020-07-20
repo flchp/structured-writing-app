@@ -1,0 +1,2 @@
+module Foreground::PostsHelper
+end

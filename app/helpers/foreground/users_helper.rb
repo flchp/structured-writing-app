@@ -1,0 +1,2 @@
+module Foreground::UsersHelper
+end
