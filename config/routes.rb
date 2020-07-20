@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+  post 'upload' => "photos#upload"
+
   namespace :foreground do
     resources :posts
 
