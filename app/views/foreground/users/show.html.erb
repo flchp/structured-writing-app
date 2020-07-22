@@ -13,7 +13,7 @@
       作者注册时间：<%= @user.created_at.strftime("%Y-%b-%d   %H:%M") %>
     </h4>
     <h4>
-      作者文章数量：<%= @user.posts.count %>
+      作者文章数量：<%= @user.posts.count %> ;公开文章：<%= @user.posts.is_public.count %>
     </h4>
 
 

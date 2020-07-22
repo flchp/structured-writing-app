@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200720212526) do
+ActiveRecord::Schema.define(version: 20200722024313) do
 
   create_table "photos", force: :cascade do |t|
     t.string "image"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 20200720212526) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.boolean "set_is_private", default: false
+    t.boolean "set_is_model", default: false
+    t.integer "post_model_id"
   end
 
   create_table "users", force: :cascade do |t|

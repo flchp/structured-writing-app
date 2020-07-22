@@ -13,8 +13,11 @@ class Account::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      flash[:notice] = "post created"
-      redirect_to account_posts_path
+      if @post.post_model
+        redirect_to edit_account_post_path(@post)
+      else
+        redirect_to account_posts_path
+      end
     else
       render :new
     end
@@ -45,9 +48,44 @@ class Account::PostsController < ApplicationController
     redirect_to account_posts_path
   end
 
+  def set_private
+    @post = Post.find(params[:id])
+    @post.set_is_private = true
+    @post.save
+    redirect_to account_posts_path
+  end
+
+  def set_public
+    @post = Post.find(params[:id])
+    @post.set_is_private = false
+    @post.save
+    redirect_to account_posts_path
+  end
+
+  def set_model
+    @post = Post.find(params[:id])
+    @post.set_is_model = true
+    @post.save
+    redirect_to account_posts_path
+  end
+
+  def quit_set_model
+    @post = Post.find(params[:id])
+    @post.set_is_model = false
+    @post.save
+    redirect_to account_posts_path
+  end
+
+  def select_model_new
+    @post = Post.new
+    @my_post_models = current_user.posts.is_model
+  end
+
+
   private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :set_is_private, :set_is_model,
+                                 :post_model_id)
   end
 end

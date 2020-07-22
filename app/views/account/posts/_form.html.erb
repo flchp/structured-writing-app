@@ -6,6 +6,9 @@
 
   <%= f.input :content, label: "正文", input_html: {id: "simditor"}  %>
 
+  <%= f.input :set_is_private, label: "设为私有" %>
+
+  <%= f.input :set_is_model, label: "设为模版" %>
 
   <%= f.submit "发表", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
 

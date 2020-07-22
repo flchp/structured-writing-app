@@ -1,0 +1,15 @@
+<h3> 选择模版写作 </h3>
+
+<%= simple_form_for [:account, @post] do |f| %>
+  <%= f.input :title, label: "文章标题" %>
+  <hr>
+  <h5>文章模版一览表</h5>
+  <% @my_post_models.each do |my_post_model| %>
+    <li>
+      <%= my_post_model.title %>
+    </li>
+  <% end %>
+  <hr>
+  <%= f.association :post_model, collection: @my_post_models, label: "选择模版" %>
+  <%= f.submit "Submit", data: { disable_with: "Submitting..." }, class: "btn btn-primary" %>
+<% end %>

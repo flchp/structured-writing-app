@@ -3,7 +3,17 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :account do
-    resources :posts
+    resources :posts do
+      member do
+        post :set_private
+        post :set_public
+        post :set_model
+        post :quit_set_model
+      end
+      collection do
+        get :select_model_new
+      end
+    end
   end
 
   post 'upload' => "photos#upload"

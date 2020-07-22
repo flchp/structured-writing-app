@@ -1,7 +1,7 @@
 class Foreground::PostsController < ApplicationController
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.is_public.order("created_at DESC")
   end
 
   def show
