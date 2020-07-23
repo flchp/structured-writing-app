@@ -86,6 +86,6 @@ class Account::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :set_is_private, :set_is_model,
-                                 :post_model_id)
+                                 :post_model_id, :category_ids => [])
   end
 end

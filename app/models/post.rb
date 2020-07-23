@@ -10,6 +10,9 @@ class Post < ApplicationRecord
            foreign_key: 'post_model_id'
   belongs_to :post_model, class_name: 'Post',
              optional: true
+  #post和category的多对多关联
+  has_many :post_category_relationships
+  has_many :categories, :through => :post_category_relationships
 
   ##scope方法
   scope :is_private, -> {where(set_is_private: true)}

@@ -6,6 +6,8 @@
 
   <%= f.input :content, label: "正文", input_html: {id: "simditor"}  %>
 
+  <%= f.association :categories, :as => :check_boxes, label: "文章分类" %>
+
   <%= f.input :set_is_private, label: "设为私有" %>
 
   <%= f.input :set_is_model, label: "设为模版" %>
