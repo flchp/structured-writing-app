@@ -6,7 +6,7 @@
 
   <%= f.input :content, label: "正文", input_html: {id: "simditor"}  %>
 
-  <%= f.association :categories, :as => :check_boxes, label: "文章分类" %>
+  <%= f.association :categories, collection: current_user.categories, label: "文章分类" %>
 
   <%= f.input :set_is_private, label: "设为私有" %>
 
@@ -26,5 +26,5 @@
         defaultImage: '<%= image_path "upload-loading.png" %>',
         upload: {url: '/upload'}
     });
-    $("#post_category_id").select2( { theme: "bootstrap"} );
+    $("#post_category_ids").select2( { theme: "bootstrap"} );
 </script>
