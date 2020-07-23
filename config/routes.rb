@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         get :select_model_new
       end
     end
+    resources :categories
   end
 
   post 'upload' => "photos#upload"

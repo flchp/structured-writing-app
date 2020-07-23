@@ -1,0 +1,23 @@
+<div class="col-md-12">
+  <div class="category">
+
+    <%= link_to("回到分类列表", account_categories_path, class: "btn btn-primary") %>
+
+    <%= link_to("修改分类", edit_account_category_path(@category), class: "btn btn-primary") %>
+
+  </div>
+
+  <h3>
+    <%= @category.name %>
+  </h3>
+  <h4>
+    <%= @category.created_at.strftime("%Y-%b-%d   %H:%M") %>
+  </h4>
+
+  <p>
+    <%= simple_format(@category.description ) %>
+  </p>
+</div>
+
+
+

@@ -6,5 +6,6 @@ class User < ApplicationRecord
 
   ##关联
   has_many :posts
+  has_many :categories
 
 end

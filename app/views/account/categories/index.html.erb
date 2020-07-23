@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <div class="category">
+    <%= link_to("新增分类", new_account_category_path, class: "btn btn-primary") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <td>新增时间</td>
+      <td>类名</td>
+      <td>管理按钮</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.created_at.strftime("%Y-%b-%d   %H:%M") %></td>
+        <td><%= link_to(category.name, account_category_path(category)) %></td>
+        <td>
+          <%= link_to("修改", edit_account_category_path(category), class: "btn btn-xs btn-primary")%>
+          <%= link_to("删除", account_category_path(category), class: "btn btn-xs btn-danger",
+                      method: :delete, data: { confirm: "Are you sure?" } )%>
+        </td>
+
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
