@@ -1,0 +1,23 @@
+<div class="col-md-12">
+  <div class="post">
+
+    <%= link_to("回到文章列表", account_posts_path, class: "btn btn-primary") %>
+
+    <%= link_to("修改文章", edit_account_post_path(@post), class: "btn btn-primary") %>
+
+  </div>
+
+  <h3>
+    <%= @post.title %>
+  </h3>
+  <h4>
+    <%= @post.created_at.strftime("%Y-%b-%d   %H:%M") %>
+  </h4>
+
+  <p>
+    <%= simple_format(@post.content) %>
+  </p>
+</div>
+
+
+

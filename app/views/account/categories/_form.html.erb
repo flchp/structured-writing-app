@@ -1,0 +1,12 @@
+<%= simple_form_for [:account, @category] do |f| %>
+
+
+  <%= f.input :name, label: "类名" %>
+
+
+  <%= f.input :description, label: "描述" %>
+
+  <%= f.submit "发表", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
+
+<% end %>
+

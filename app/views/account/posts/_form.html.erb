@@ -1,0 +1,30 @@
+<%= simple_form_for [:account, @post] do |f| %>
+
+
+  <%= f.input :title, label: "题目" %>
+
+
+  <%= f.input :content, label: "正文", input_html: {id: "simditor"}  %>
+
+  <%= f.association :categories, collection: current_user.categories, label: "文章分类" %>
+
+  <%= f.input :set_is_private, label: "设为私有" %>
+
+  <%= f.input :set_is_model, label: "设为模版" %>
+
+  <%= f.submit "发表", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
+
+<% end %>
+
+
+<script type="text/javascript">
+    var editor = new Simditor({
+        textarea: $('#simditor'),
+        toolbar: [ 'title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color',
+            'code', 'blockquote', 'link', 'image', 'ol', 'ul', 'hr', 'table', 'indent','outdent','alignment'],
+        pasteImage: true,
+        defaultImage: '<%= image_path "upload-loading.png" %>',
+        upload: {url: '/upload'}
+    });
+    $("#post_category_ids").select2( { theme: "bootstrap"} );
+</script>
