@@ -9,9 +9,11 @@ Rails.application.routes.draw do
         post :set_public
         post :set_model
         post :quit_set_model
+        post :quit_like
       end
       collection do
         get :select_model_new
+        get :like_posts_index
       end
     end
     resources :categories
@@ -20,7 +22,13 @@ Rails.application.routes.draw do
   post 'upload' => "photos#upload"
 
   namespace :foreground do
-    resources :posts
+    resources :posts do
+      member do
+        post :like
+        post :quit_like
+      end
+      resources :comments
+    end
 
     resources :users
   end

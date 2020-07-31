@@ -45,41 +45,54 @@ class Account::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:alert] = "post deleted"
-    redirect_to account_posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   def set_private
     @post = Post.find(params[:id])
     @post.set_is_private = true
     @post.save
-    redirect_to account_posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   def set_public
     @post = Post.find(params[:id])
     @post.set_is_private = false
     @post.save
-    redirect_to account_posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   def set_model
     @post = Post.find(params[:id])
     @post.set_is_model = true
     @post.save
-    redirect_to account_posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   def quit_set_model
     @post = Post.find(params[:id])
     @post.set_is_model = false
     @post.save
-    redirect_to account_posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   def select_model_new
     @post = Post.new
     @my_post_models = current_user.posts.is_model
   end
+
+  def like_posts_index
+    @posts = current_user.liked_posts.order("created_at DESC")
+  end
+
+  def quit_like
+    @post = Post.find(params[:id])
+    like = @post.find_like(current_user)
+    like.destroy
+
+    redirect_back(fallback_location: root_path)
+  end
+
 
 
   private
